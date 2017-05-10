@@ -47,20 +47,20 @@ consumer_gcc() {
 }
 
 create() {
+   echo "performing Excercise 5 (Create a Conan Package)"
    cd create
    conan new mylib/1.0@myuser/testing -t
    conan test_package
 }
 
 create_sources() {
+   echo "performing Excercise 5 (Create Package with sources)"
    cd create_sources
    conan new mylib/1.0@myuser/testing -t
    sed -i 's/source/no_source/g' conanfile.py
    sed -i 's/\"cmake\"/\"cmake\"\n    exports="*"/g' conanfile.py
    conan test_package
 }
-
-
 
 
 read_options(){
