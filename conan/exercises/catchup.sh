@@ -54,7 +54,7 @@ create() {
 }
 
 create_sources() {
-   echo "performing Excercise 5 (Create Package with sources)"
+   echo "performing Excercise 6 (Create Package with sources)"
    cd create_sources
    conan new mylib/1.0@myuser/testing -t
    sed -i 's/source/no_source/g' conanfile.py
@@ -85,6 +85,7 @@ show_menus() {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "2. Excercise 2 (Consume with CMake)"
         echo "3. Excercise 3 (Consume with CMake, with different build_type, Debug)"
+        echo "3. Excercise 4 (Consume with GCC)"
         echo "5. Excercise 5 (Create a conan package)"
         echo "6. Excercise 6 (Create package with sources)"
         echo "-1. Exit"
