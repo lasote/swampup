@@ -8,7 +8,35 @@ APIKEY='AKCp2WWshJKjZjguhB3vD2u3RMwHA7gmxWUohWVhs1FqacHBAzKaiL2pp24NNUEhWHm5Dd4J
 consumer() {
    echo "performing Excercise 2 (consumer, with CMake)"
    cd consumer
-   conan remote add artifactory http://35.185.192.7/artifactory
+   rm -rf build
+   mkdir -p build
+   cd build
+   conan install ../ --build missing
+   cmake ..
+   cmake --build .
+   cd bin
+   ./timer
+}
+
+
+consumer_debug() {
+   echo "performing Excercise 3 (consumer, with build_type Debug)"
+   cd consumer
+   rm -rf build
+   mkdir -p build
+   cd build
+   conan install .. -s build_type=Debug
+   cmake ..
+   cmake --build .
+   conan search
+   conan search zlib/1.2.8@lasote/stable
+}
+
+consumer_gcc() {
+   echo "performing Excercise 4 (consumer, with GCC)"
+   cd consumer
+   sed -i 's/cmake/gcc/g' conanfile.py
+   rm -rf build
    mkdir -p build
    cd build
    conan install ../ --build missing
@@ -32,15 +60,6 @@ create_sources() {
    conan test_package
 }
 
-consumer_debug() {
-   cd consumer
-   cd build
-   conan install .. -s build_type=Debug
-   cmake ..
-   cmake --build .
-   conan search
-   conan search zlib/1.2.8@lasote/stable
-}
 
 
 
@@ -51,6 +70,7 @@ read_options(){
         case $choice in
                 2) consumer ;;
                 3) consumer_debug ;;
+                4) consumer_gcc ;;
                 5) create ;;
                 6) create_sources ;;
                 -1) exit 0 ;;
