@@ -85,7 +85,7 @@ CXX=arm-linux-gnueabihf-g++
    cd build
    conan install .. --profile ../arm_gcc_debug.profile
    conan build ..
-
+   ls ./bin/example
 }
 
 read_options(){
