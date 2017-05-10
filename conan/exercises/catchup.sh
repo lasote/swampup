@@ -66,17 +66,18 @@ upload_artifactory() {
 
 profile_arm_compiler() {
    cd profile_arm
-   echo "
-[settings]
-   os: Linux
-   compiler: gcc
-   compiler.version: 4.6
-   compiler.libcxx: libstdc++
-   build_type: Debug
-   arch: armv7
+   echo "[settings]
+os=Linux
+compiler=gcc
+compiler.version=4.6
+compiler.libcxx=libstdc++
+build_type=Debug
+arch=armv7
+
 [env]
-   CC=arm-linux-gnueabihf-gcc
-   CXX=arm-linux-gnueabihf-g++" > "arm_gcc_debug.profile"
+CC=arm-linux-gnueabihf-gcc
+CXX=arm-linux-gnueabihf-g++
+" > "arm_gcc_debug.profile"
 
    conan install --profile ./arm_gcc_debug.profile
 }
