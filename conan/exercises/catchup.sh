@@ -6,7 +6,7 @@ APIKEY='AKCp2WWshJKjZjguhB3vD2u3RMwHA7gmxWUohWVhs1FqacHBAzKaiL2pp24NNUEhWHm5Dd4J
 
 consumer() {
    echo "performing Excercise 2 (consumer, with CMake)"
-   cd 1_consumer
+   cd consumer
    conan remote add artifactory http://35.185.192.7/artifactory
    mkdir -p build
    cd build
@@ -18,11 +18,13 @@ consumer() {
 }
 
 create() {
+   cd create
    conan new mylib/1.0@myuser/testing -t
    conan test_package
 }
 
 create_sources() {
+   cd create_sources
    conan new mylib/1.0@myuser/testing -t
    sed -i 's/source/no_source/g' conanfile.py
    sed -i 's/\"cmake\"/\"cmake\"\n    exports="*"/g' conanfile.py
