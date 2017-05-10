@@ -69,7 +69,7 @@ profile_arm_compiler() {
    echo "[settings]
 os=Linux
 compiler=gcc
-compiler.version=4.6
+compiler.version=4.9
 compiler.libcxx=libstdc++
 build_type=Debug
 arch=armv7
