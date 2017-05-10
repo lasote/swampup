@@ -32,14 +32,25 @@ create_sources() {
    conan test_package
 }
 
+consumer_debug() {
+   cd consumer
+   cd build
+   conan install .. -s build_type=Debug
+   cmake ..
+   cmake --build .
+   conan search
+   conan search zlib/1.2.8@lasote/stable
+}
+
 
 
 read_options(){
         local choice
         cd ${curdir}
-        read -p "Enter choice " choice
+        read -p "Enter choice: " choice
         case $choice in
                 2) consumer ;;
+                3) consumer_debug ;;
                 5) create ;;
                 6) create_sources ;;
                 -1) exit 0 ;;
@@ -53,6 +64,7 @@ show_menus() {
         echo " Automation Catch Up Menu "
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "2. Excercise 2 (Consume with CMake)"
+        echo "3. Excercise 3 (Consume with CMake, with different build_type, Debug)"
         echo "5. Excercise 5 (Create a conan package)"
         echo "6. Excercise 6 (Create package with sources)"
         echo "-1. Exit"
