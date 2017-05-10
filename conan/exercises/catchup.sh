@@ -84,8 +84,7 @@ CXX=arm-linux-gnueabihf-g++
    mkdir -p build
    cd build
    conan install .. --profile ../arm_gcc_debug.profile
-   cmake ..
-   cmake --build .
+   conan build ..
 
 }
 
