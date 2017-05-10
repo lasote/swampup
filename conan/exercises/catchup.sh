@@ -79,7 +79,14 @@ CC=arm-linux-gnueabihf-gcc
 CXX=arm-linux-gnueabihf-g++
 " > "arm_gcc_debug.profile"
 
-   conan install --profile ./arm_gcc_debug.profile
+   conan install
+   rm -rf build
+   mkdir -p build
+   cd build
+   conan install .. --profile ../arm_gcc_debug.profile
+   cmake ..
+   cmake --build .
+
 }
 
 read_options(){
