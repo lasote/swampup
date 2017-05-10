@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RED='\033[0;41;30m'
+RED='\033[0;51;30m'
 STD='\033[0;0;39m'
 APIKEY='AKCp2WWshJKjZjguhB3vD2u3RMwHA7gmxWUohWVhs1FqacHBAzKaiL2pp24NNUEhWHm5Dd4JY'
 
@@ -35,11 +35,11 @@ read_options(){
         local choice
         read -p "Enter choice " choice
         case $choice in
-                1) consumer ;;
+                2) consumer ;;
                 5) create ;;
                 6) create_sources ;;
                 -1) exit 0 ;;
-                *) echo -e "${RED}Error...${STD}" && sleep 2
+                *) echo -e "${RED}Not valid option! ${STD}" && sleep 2
         esac
 }
 
