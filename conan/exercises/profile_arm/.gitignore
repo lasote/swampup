@@ -1,4 +1,3 @@
-build
+*.profile
 conanbuildinfo*
 conaninfo*
-timer

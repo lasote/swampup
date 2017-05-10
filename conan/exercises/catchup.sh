@@ -58,6 +58,28 @@ create_sources() {
    conan test_package
 }
 
+upload_artifactory() {
+   echo "performing Excercise 7 (Upload packages to artifactory)"
+   conan upload "mylib*" -r artifactory --all
+}
+
+
+profile_arm_compiler() {
+   cd profile_arm
+   echo "
+[settings]
+   os: Linux
+   compiler: gcc
+   compiler.version: 4.6
+   compiler.libcxx: libstdc++
+   build_type: Debug
+   arch: armv7
+[env]
+   CC=arm-linux-gnueabihf-gcc
+   CXX=arm-linux-gnueabihf-g++" > "arm_gcc_debug.profile"
+
+   conan install --profile ./arm_gcc_debug.profile
+}
 
 read_options(){
         local choice
@@ -69,6 +91,8 @@ read_options(){
                 4) consumer_gcc ;;
                 5) create ;;
                 6) create_sources ;;
+                7) upload_artifactory ;;
+                8) profile_arm_compiler ;;
                 -1) exit 0 ;;
                 *) echo -e "${RED}Not valid option! ${STD}" && sleep 2
         esac
@@ -84,6 +108,8 @@ show_menus() {
         echo "4. Excercise 4 (Consume with GCC)"
         echo "5. Excercise 5 (Create a conan package)"
         echo "6. Excercise 6 (Create package with sources)"
+        echo "7. Excercise 7 (Upload packages to artifactory)"
+        echo "8. Excercise 8 (Create a profile for RPI toolchain)"
         echo "-1. Exit"
 }
 
