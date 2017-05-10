@@ -9,6 +9,6 @@ class DefaultNameConan(ConanFile):
     requires = "zlib/1.2.11@lasote/stable"
 
     def build(self):
-        cmake = CMake(self.settings)
-        cmake.configure(self)
-        cmake.build(self)
+        cmake = CMake(self)
+        cmake.configure()
+        cmake.build()
