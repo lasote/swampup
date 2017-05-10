@@ -35,11 +35,11 @@ consumer_debug() {
 consumer_gcc() {
    echo "performing Excercise 4 (consumer, with GCC)"
    cd consumer
-   sed -i 's/cmake/gcc/g' conanfile.py
+   sed -i 's/cmake/gcc/g' conanfile.txt
    conan install ../ --build missing
    g++ ../timer.cpp @conanbuildinfo.gcc -o timer --std=c++11
    ./timer
-   sed -i 's/gcc/cmake/g' conanfile.py
+   sed -i 's/gcc/cmake/g' conanfile.txt
 }
 
 create() {
