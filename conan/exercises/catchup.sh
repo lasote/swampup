@@ -34,7 +34,7 @@ consumer_debug() {
 
 consumer_gcc() {
    echo "performing Excercise 4 (consumer, with GCC)"
-   cd consumer
+   cd consumer_gcc
    sed -i 's/cmake/gcc/g' conanfile.txt
    conan install ../ --build missing
    g++ ../timer.cpp @conanbuildinfo.gcc -o timer --std=c++11
@@ -81,7 +81,7 @@ show_menus() {
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo "2. Excercise 2 (Consume with CMake)"
         echo "3. Excercise 3 (Consume with CMake, with different build_type, Debug)"
-        echo "3. Excercise 4 (Consume with GCC)"
+        echo "4. Excercise 4 (Consume with GCC)"
         echo "5. Excercise 5 (Create a conan package)"
         echo "6. Excercise 6 (Create package with sources)"
         echo "-1. Exit"
