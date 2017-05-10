@@ -33,10 +33,10 @@ create_sources() {
 
 read_options(){
         local choice
-        read -p "Enter choice [ 1 - 4] " choice
+        read -p "Enter choice " choice
         case $choice in
-                1) exercise2 ;;
-                4) exercise2 ;;
+                1) consumer ;;
+                5) create ;;
                 6) create_sources ;;
                 -1) exit 0 ;;
                 *) echo -e "${RED}Error...${STD}" && sleep 2
