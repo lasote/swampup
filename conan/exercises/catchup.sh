@@ -1,5 +1,6 @@
 #!/bin/bash
 
+curdir=$(pwd)
 RED='\033[0;51;30m'
 STD='\033[0;0;39m'
 APIKEY='AKCp2WWshJKjZjguhB3vD2u3RMwHA7gmxWUohWVhs1FqacHBAzKaiL2pp24NNUEhWHm5Dd4JY'
@@ -35,6 +36,7 @@ create_sources() {
 
 read_options(){
         local choice
+        cd ${curdir}
         read -p "Enter choice " choice
         case $choice in
                 2) consumer ;;
