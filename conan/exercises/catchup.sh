@@ -20,7 +20,7 @@ consumer() {
 
 
 consumer_debug() {
-   echo "performing Excercise 3 (consumer, with build_type Debug)"
+   echo "performing Exercise 3 (consumer, with build_type Debug)"
    cd consumer
    rm -rf build
    mkdir -p build
@@ -33,7 +33,7 @@ consumer_debug() {
 }
 
 consumer_gcc() {
-   echo "performing Excercise 4 (consumer, with GCC)"
+   echo "performing Exercise 4 (consumer, with GCC)"
    cd consumer_gcc
    sed -i 's/cmake/gcc/g' conanfile.txt
    conan install . --build missing
@@ -43,24 +43,22 @@ consumer_gcc() {
 }
 
 create() {
-   echo "performing Excercise 5 (Create a Conan Package)"
+   echo "performing Exercise 5 (Create a Conan Package)"
    cd create
-   conan new mylib/1.0@myuser/testing -t
+   conan new Hello/1.0@myuser/testing -t
    conan test_package
 }
 
 create_sources() {
-   echo "performing Excercise 6 (Create Package with sources)"
+   echo "performing Exercise 6 (Create Package with sources)"
    cd create_sources
-   conan new mylib/1.0@myuser/testing -t
-   sed -i 's/source/no_source/g' conanfile.py
-   sed -i 's/\"cmake\"/\"cmake\"\n    exports="*"/g' conanfile.py
+   conan new Hello/1.0@myuser/testing -t --source
    conan test_package
 }
 
 upload_artifactory() {
-   echo "performing Excercise 7 (Upload packages to artifactory)"
-   conan upload "mylib*" -r artifactory --all
+   echo "performing Exercise 7 (Upload packages to artifactory)"
+   conan upload Hello/1.0@myuser/testing -r artifactory --all
 }
 
 
